@@ -1,0 +1,17 @@
+@import 'maxins';
+@import 'variables';
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  color: $grey;
+  font-size: small;
+
+  @include for-tablet-portrait-down {
+    font-size: smaller;
+  }
+
+  @include for-phone-only {
+    font-size: x-small;
+  }
+}

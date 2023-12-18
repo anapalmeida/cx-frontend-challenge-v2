@@ -1,0 +1,21 @@
+@import 'maxins';
+@import 'variables';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 60vw;
+
+  @include for-tablet-portrait-down {
+    width: 100%;
+    padding: 0 1rem;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  @include for-phone-only {
+    gap: 0.3rem;
+  }
+}

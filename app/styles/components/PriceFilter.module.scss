@@ -1,0 +1,107 @@
+@import 'maxins';
+@import 'variables';
+
+.priceFilter {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 140px;
+  transition: 0.3s;
+
+  @include for-tablet-portrait-down {
+    background-color: $white;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    height: fit-content;
+    position: absolute;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  &__collapsed {
+    @include for-tablet-portrait-down {
+      display: none;
+    }
+  }
+
+  &__icon {
+    display: none;
+    color: $blue;
+    transition: 0.3s;
+    background: none;
+
+    @include for-tablet-portrait-down {
+      display: inline;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    position: relative;
+    z-index: 1;
+
+    @include for-tablet-portrait-down {
+      background-color: $white;
+    }
+  }
+
+  &__line {
+    font-size: small;
+    color: $grey;
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__results {
+    display: inline;
+    font-size: 0.7rem;
+    color: #d2d2d2ee;
+  }
+
+  &__range {
+    display: flex;
+    align-items: center;
+    margin-top: 0.2rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__wrapper_left {
+    &:after {
+      color: $grey;
+      content: '—';
+      font-size: x-small;
+      line-height: 2px;
+      margin: 0px 5px;
+    }
+  }
+
+  &__input {
+    border: 1px solid $grey;
+    border-radius: 0.375em;
+    font-size: 0.7rem;
+    height: 25px;
+    width: 84px;
+    padding: 0.5rem;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d2d2d2ee;
+    border: none;
+    border-radius: 50%;
+    color: $white;
+    margin-left: 8px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}

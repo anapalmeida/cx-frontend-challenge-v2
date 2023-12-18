@@ -1,0 +1,19 @@
+@import 'maxins';
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $lightergrey;
+  padding: 3rem 0;
+
+  @include for-tablet-portrait-down {
+    padding: 2rem 0;
+  }
+
+  @include for-phone-only {
+    padding: 1rem 0;
+  }
+}

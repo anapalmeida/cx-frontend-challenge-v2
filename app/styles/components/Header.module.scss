@@ -1,0 +1,19 @@
+@import 'maxins';
+@import 'variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $yellow;
+  width: 100vw;
+  padding: 1rem;
+
+  @include for-tablet-portrait-down {
+    padding: 0.4rem 0;
+  }
+
+  @include for-phone-only {
+    padding: 0.3rem 0;
+  }
+}
