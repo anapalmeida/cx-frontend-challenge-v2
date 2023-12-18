@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
     const results = await apiService.searchProducts({
       textToSearch: query,
       sortBy: sort || "relevance",
-      priceFilter: priceFilter || null,
+      priceFilter: priceFilter,
     } as IApiParams);
 
     return {

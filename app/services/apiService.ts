@@ -3,6 +3,7 @@ import { IApiProduct, IProduct } from "@/interfaces/Products";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 import { IFilter } from "@/interfaces/Filters";
+import ISort from "@/interfaces/SortBy";
 
 const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -73,7 +74,9 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
 
       return {
         available_filters: availableFilters,
-        available_sorts: mergedSorts,
+        available_sorts: mergedSorts.sort((a: ISort, b: ISort) =>
+          a.name.localeCompare(b.name)
+        ),
         results: mappedProducts,
       };
     }

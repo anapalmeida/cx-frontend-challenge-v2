@@ -31,7 +31,10 @@ export default function PriceFilter() {
   };
 
   const handleFilterChange = (id: string) => {
-    router.push(`${pathname}&price=${id}`);
+    router.push({
+      pathname,
+      query: { ...router.query, price: id },
+    });
     dispatch(setPriceFilter(id));
   };
 
@@ -69,7 +72,7 @@ export default function PriceFilter() {
           {data?.values.map(
             (value: { id: string; name: string; results: number }) => (
               <li key={value.id} className={styles.priceFilter__line}>
-                <button
+                <a
                   onClick={() => handleFilterChange(value.id)}
                   className={`${styles.priceFilter__name}  ${montserrat.className}`}
                   aria-label={`${value.name}. ${value.results} results`}
@@ -80,7 +83,7 @@ export default function PriceFilter() {
                   >
                     ({value.results})
                   </span>
-                </button>
+                </a>
               </li>
             )
           )}
