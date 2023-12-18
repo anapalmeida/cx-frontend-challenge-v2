@@ -20,7 +20,7 @@ const initialState = {
 
 const apiResultsReducer = (
   state = initialState,
-  action: SetResultsAction | ClearResultsAction,
+  action: SetResultsAction | ClearResultsAction
 ) => {
   switch (action.type) {
     case 'SET_RESULTS':

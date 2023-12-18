@@ -9,7 +9,7 @@ const initialState = {
 
 const priceFilterReducer = (
   state = initialState,
-  action: SetPriceFilterAction,
+  action: SetPriceFilterAction
 ) => {
   switch (action.type) {
     case 'SET_PRICE_FILTER':

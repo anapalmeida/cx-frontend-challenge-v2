@@ -18,8 +18,8 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Image
-        src="/images/logo_ml.png"
-        alt="Logo Mercado Livre"
+        src='/images/logo_ml.png'
+        alt='Logo Mercado Livre'
         width={40}
         height={30}
         onClick={handleClearProducts}

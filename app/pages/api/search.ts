@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-import apiService from "@/services/apiService";
+import apiService from '@/services/apiService';
 
 export default async function search(
   req: NextApiRequest,
@@ -17,7 +17,7 @@ export default async function search(
 
     res.status(200).json(data);
   } catch (error) {
-    console.error("Error in API call:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error in API call:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

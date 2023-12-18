@@ -13,7 +13,7 @@ describe('Navbar component', () => {
     const { getByAltText, getByTestId } = render(
       <Provider store={store}>
         <Navbar />
-      </Provider>,
+      </Provider>
     );
 
     const logoImage = getByAltText('Logo Mercado Livre');
@@ -27,7 +27,7 @@ describe('Navbar component', () => {
     const { getByAltText } = render(
       <Provider store={store}>
         <Navbar />
-      </Provider>,
+      </Provider>
     );
 
     const clearResultsMock = jest.fn();

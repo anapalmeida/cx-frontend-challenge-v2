@@ -1,18 +1,18 @@
-import React, { FormEvent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { FormEvent, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { FaFilter } from "react-icons/fa";
-import { IFilter } from "@/interfaces/Filters";
-import { MdOutlineArrowForwardIos } from "react-icons/md";
-import { Montserrat } from "@next/font/google";
-import { RootState } from "@/storage/store";
-import { setPriceFilter } from "@/storage/slices/priceFilterSlice";
-import styles from "@/styles/components/PriceFilter.module.scss";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import { FaFilter } from 'react-icons/fa';
+import { IFilter } from '@/interfaces/Filters';
+import { MdOutlineArrowForwardIos } from 'react-icons/md';
+import { Montserrat } from '@next/font/google';
+import { RootState } from '@/storage/store';
+import { setPriceFilter } from '@/storage/slices/priceFilterSlice';
+import styles from '@/styles/components/PriceFilter.module.scss';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 
-const montserratBold = Montserrat({ weight: "600", subsets: ["latin"] });
-const montserrat = Montserrat({ weight: "500", subsets: ["latin"] });
+const montserratBold = Montserrat({ weight: '600', subsets: ['latin'] });
+const montserrat = Montserrat({ weight: '500', subsets: ['latin'] });
 
 export default function PriceFilter() {
   const [data, setData] = useState<IFilter | undefined>();
@@ -40,7 +40,7 @@ export default function PriceFilter() {
 
   useEffect(() => {
     const filter = apiResult.available_filters.find(
-      (filter: any) => filter.id === "price"
+      (filter: any) => filter.id === 'price'
     );
 
     setData(filter as IFilter | undefined);
@@ -52,15 +52,15 @@ export default function PriceFilter() {
         <button
           className={styles.collapseButton}
           onClick={handleCollapseToggle}
-          aria-expanded={isCollapsed ? "false" : "true"}
-          aria-controls="priceFilterList"
+          aria-expanded={isCollapsed ? 'false' : 'true'}
+          aria-controls='priceFilterList'
         >
           <FaFilter />
         </button>
       </button>
       <div
         className={`${styles.priceFilter} ${
-          isCollapsed ? styles.priceFilter__collapsed : ""
+          isCollapsed ? styles.priceFilter__collapsed : ''
         }`}
       >
         <h3
@@ -91,7 +91,7 @@ export default function PriceFilter() {
             <form
               className={styles.priceFilter__range}
               onSubmit={handleSubmit}
-              aria-label="Price range filter"
+              aria-label='Price range filter'
             >
               <div className={styles.priceFilter__range}>
                 <div
@@ -99,20 +99,20 @@ export default function PriceFilter() {
                 >
                   <div>
                     <input
-                      id="max"
-                      name="max"
-                      type="number"
-                      placeholder="Mínimo"
+                      id='max'
+                      name='max'
+                      type='number'
+                      placeholder='Mínimo'
                       className={`${styles.priceFilter__input} ${montserrat.className}`}
                     />
                   </div>
                 </div>
                 <div className={styles.priceFilter__wrapper}>
                   <input
-                    id="max"
-                    name="max"
-                    type="number"
-                    placeholder="Máximo"
+                    id='max'
+                    name='max'
+                    type='number'
+                    placeholder='Máximo'
                     className={`${styles.priceFilter__input} ${montserrat.className}`}
                   />
                 </div>
@@ -120,8 +120,8 @@ export default function PriceFilter() {
               <div>
                 <button
                   className={styles.priceFilter__button}
-                  type="submit"
-                  aria-label="Apply filter"
+                  type='submit'
+                  aria-label='Apply filter'
                 >
                   <MdOutlineArrowForwardIos />
                 </button>

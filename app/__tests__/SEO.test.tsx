@@ -7,12 +7,12 @@ describe('SEO component', () => {
     const { getByText, getByTitle } = render(<SEO />);
 
     const titleElement = getByTitle(
-      'Mercado Livre Brasil - Frete Grátis no mesmo dia',
+      'Mercado Livre Brasil - Frete Grátis no mesmo dia'
     );
     expect(titleElement).toBeInTheDocument();
 
     const descriptionElement = getByText(
-      'Compre produtos com Frete Grátis no mesmo dia no Mercado Livre Brasil. Encontre milhares de marcas e produtos a preços incríveis.',
+      'Compre produtos com Frete Grátis no mesmo dia no Mercado Livre Brasil. Encontre milhares de marcas e produtos a preços incríveis.'
     );
     expect(descriptionElement).toBeInTheDocument();
   });

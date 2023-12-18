@@ -1,9 +1,9 @@
-import { IApiParams, IApiResponseClient } from "@/interfaces/Api";
-import { IApiProduct, IProduct } from "@/interfaces/Products";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { IApiParams, IApiResponseClient } from '@/interfaces/Api';
+import { IApiProduct, IProduct } from '@/interfaces/Products';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
-import { IFilter } from "@/interfaces/Filters";
-import ISort from "@/interfaces/SortBy";
+import { IFilter } from '@/interfaces/Filters';
+import ISort from '@/interfaces/SortBy';
 
 const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -16,9 +16,9 @@ interface ApiErrorResponse {
 
 const handleApiError = (error: ApiErrorResponse) => {
   if (axios.isAxiosError(error)) {
-    console.error("API request failed:", error.response?.status, error.message);
+    console.error('API request failed:', error.response?.status, error.message);
   } else {
-    console.error("Unexpected error during API request:", error.message);
+    console.error('Unexpected error during API request:', error.message);
   }
 };
 
@@ -26,7 +26,7 @@ const constructApiUrl = ({ textToSearch, sortBy, priceFilter }: IApiParams) => {
   let apiURL = `${NEXT_PUBLIC_API_BASE_URL}/search?q=${textToSearch}&sort=${sortBy}&limit=10`;
 
   if (!textToSearch.trim()) {
-    throw new Error("Search text cannot be empty");
+    throw new Error('Search text cannot be empty');
   }
 
   if (priceFilter) {
@@ -49,8 +49,8 @@ const mapProductData = (product: IApiProduct): IProduct => ({
     amount: product?.installments?.amount,
   },
   address: {
-    state_name: "Buenos Aires",
-    city_name: "Buenos Aires",
+    state_name: 'Buenos Aires',
+    city_name: 'Buenos Aires',
   },
   picture: product?.thumbnail,
   condition: product?.condition,
@@ -64,7 +64,7 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
 
     if (data && data.results && data.results.length > 0) {
       const availableFilters = data.available_filters.filter(
-        (filter: IFilter) => filter.id === "price"
+        (filter: IFilter) => filter.id === 'price'
       );
       const availableSorts = data.available_sorts;
       const currentSort = data.sort;
@@ -87,7 +87,7 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
     };
   } catch (error) {
     handleApiError(error as AxiosError<ApiErrorResponse>);
-    throw new Error("Failed to fetch results");
+    throw new Error('Failed to fetch results');
   }
 };
 

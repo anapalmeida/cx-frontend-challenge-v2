@@ -1,11 +1,11 @@
-import { GetServerSideProps, NextPage } from "next";
-import { IApiParams, IApiResponseClient } from "@/interfaces/Api";
+import { GetServerSideProps, NextPage } from 'next';
+import { IApiParams, IApiResponseClient } from '@/interfaces/Api';
 
-import List from "@/components/List";
-import React from "react";
-import apiService from "@/services/apiService";
-import { setResults } from "@/storage/slices/apiResultsSlice";
-import { useDispatch } from "react-redux";
+import List from '@/components/List';
+import React from 'react';
+import apiService from '@/services/apiService';
+import { setResults } from '@/storage/slices/apiResultsSlice';
+import { useDispatch } from 'react-redux';
 
 interface SearchPageProps {
   results: IApiResponseClient | null;
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
       },
     };
   } catch (error) {
-    console.error("Error in server-side API call:", error);
+    console.error('Error in server-side API call:', error);
     return {
       props: {
         results: null,

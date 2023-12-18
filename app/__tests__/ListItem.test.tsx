@@ -17,7 +17,7 @@ describe('ListItem component', () => {
 
   it('renders the ListItem component with provided props', () => {
     const { getByText, getByAltText } = render(
-      <ListItem props={mockProduct} />,
+      <ListItem props={mockProduct} />
     );
 
     expect(getByText('Mock Product')).toBeInTheDocument();

@@ -1,12 +1,13 @@
 module.exports = {
-  plugins: ["react"],
+  plugins: ['react'],
   extends: [
-    "next",
-    "plugin:react-hooks/recommended",
-    "eslint:recommended",
-    "plugin:react/recommended",
+    'next',
+    'plugin:react-hooks/recommended',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'prettier',
   ],
   rules: {
-    "react/prop-types": 0,
+    'react/prop-types': 0,
   },
 };

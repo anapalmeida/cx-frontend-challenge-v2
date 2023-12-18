@@ -1,12 +1,12 @@
-import { HiOutlineTruck } from "react-icons/hi";
-import { IProduct } from "@/interfaces/Products";
-import Image from "next/image";
-import { Montserrat } from "@next/font/google";
-import React from "react";
-import formatCurrencyARS from "@/utils/formatCurrency";
-import styles from "@/styles/components/ListItem.module.scss";
+import { HiOutlineTruck } from 'react-icons/hi';
+import { IProduct } from '@/interfaces/Products';
+import Image from 'next/image';
+import { Montserrat } from '@next/font/google';
+import React from 'react';
+import formatCurrencyARS from '@/utils/formatCurrency';
+import styles from '@/styles/components/ListItem.module.scss';
 
-const montserrat = Montserrat({ weight: "500", subsets: ["latin"] });
+const montserrat = Montserrat({ weight: '500', subsets: ['latin'] });
 
 interface ListItemProps {
   props: IProduct;
@@ -28,8 +28,8 @@ export default function ListItem({ props }: ListItemProps) {
             {formatCurrencyARS(parseFloat(props.price.amount))}
           </h3>
           {props.free_shipping && (
-            <i className={styles.card__freeShipping} aria-label="Free Shipping">
-              <HiOutlineTruck size="10px" />
+            <i className={styles.card__freeShipping} aria-label='Free Shipping'>
+              <HiOutlineTruck size='10px' />
             </i>
           )}
         </div>
@@ -43,7 +43,7 @@ export default function ListItem({ props }: ListItemProps) {
               props.installments.quantity
             } cuotas de ${formatCurrencyARS(props.installments.amount)}`}
           >
-            En {props.installments.quantity} cuotas de{" "}
+            En {props.installments.quantity} cuotas de{' '}
             {formatCurrencyARS(props.installments.amount)}
           </span>
         )}

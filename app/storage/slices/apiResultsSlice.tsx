@@ -20,10 +20,10 @@ const apiResultsSlice = createSlice({
   name: 'apiResults',
   initialState,
   reducers: {
-    setResults: (state, action: PayloadAction<ApiResultsState>) => {
+    setResults: (_, action: PayloadAction<ApiResultsState>) => {
       return action.payload;
     },
-    clearResults: state => {
+    clearResults: () => {
       return initialState;
     },
   },
