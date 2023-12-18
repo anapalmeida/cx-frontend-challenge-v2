@@ -20,7 +20,10 @@ export default function SortBy() {
   const dispatch = useDispatch();
 
   const handleSortByChange = (id: string) => {
-    router.push(`${pathname}&sort=${id}`);
+    router.push({
+      pathname,
+      query: { ...router.query, sort: id },
+    });
     dispatch(setSortBy(id));
     setIsOpen(false);
   };

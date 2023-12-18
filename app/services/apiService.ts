@@ -40,7 +40,7 @@ const mapProductData = (product: IApiProduct): IProduct => ({
   title: product?.title,
   price: {
     currency: product?.installments?.currency_id,
-    amount: product?.price.amount,
+    amount: product?.price.toString(),
     decimals: 0,
   },
   installments: {

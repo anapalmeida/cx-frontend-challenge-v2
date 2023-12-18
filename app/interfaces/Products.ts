@@ -2,7 +2,7 @@ export interface IApiProduct {
   id: string;
   title: string;
   price: {
-    amount: string;
+    amount: number;
     decimals: number;
   };
   installments: {

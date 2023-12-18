@@ -29,11 +29,13 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
   context
 ) => {
   const { query } = context.params || {};
+  const { sort, priceFilter } = context.query || {};
 
   try {
     const results = await apiService.searchProducts({
       textToSearch: query,
-      sortBy: query,
+      sortBy: sort || "relevance",
+      priceFilter: priceFilter || null,
     } as IApiParams);
 
     return {
