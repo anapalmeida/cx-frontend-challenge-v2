@@ -18,9 +18,6 @@ export default function PriceFilter() {
   const [data, setData] = useState<IFilter | undefined>();
   const [isCollapsed, setIsCollapsed] = useState(true);
   const apiResult = useSelector((state: RootState) => state.apiResults);
-  const priceFilter = useSelector(
-    (state: RootState) => state.priceFilter.priceFilter
-  );
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
@@ -34,16 +31,7 @@ export default function PriceFilter() {
   };
 
   const handleFilterChange = (id: string) => {
-    if (priceFilter) {
-      const { query } = router;
-
-      router.replace({
-        pathname: router.pathname,
-        query: { ...query, price: id },
-      });
-    } else {
-      router.push(`${pathname}&price=${id}`);
-    }
+    router.push(`${pathname}&price=${id}`);
     dispatch(setPriceFilter(id));
   };
 

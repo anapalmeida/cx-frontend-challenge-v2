@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Montserrat } from '@next/font/google';
-import { RootState } from '@/storage/store';
-import { setSortBy } from '@/storage/slices/sortBySlice';
-import styles from '@/styles/components/SortBy.module.scss';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { Montserrat } from "@next/font/google";
+import { RootState } from "@/storage/store";
+import { setSortBy } from "@/storage/slices/sortBySlice";
+import styles from "@/styles/components/SortBy.module.scss";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
-const montserratBold = Montserrat({ weight: '600', subsets: ['latin'] });
-const montserratThin = Montserrat({ weight: '400', subsets: ['latin'] });
+const montserratBold = Montserrat({ weight: "600", subsets: ["latin"] });
+const montserratThin = Montserrat({ weight: "400", subsets: ["latin"] });
 
 export default function SortBy() {
   const sortBy = useSelector((state: RootState) => state.sortBy.sortBy);
@@ -20,18 +20,8 @@ export default function SortBy() {
   const dispatch = useDispatch();
 
   const handleSortByChange = (id: string) => {
-    if (sortBy) {
-      const { query } = router;
-
-      router.replace({
-        pathname: router.pathname,
-        query: { ...query, sort: id },
-      });
-    } else {
-      router.push(`${pathname}&sort=${id}`);
-    }
-    dispatch(setSortBy(id));
     router.push(`${pathname}&sort=${id}`);
+    dispatch(setSortBy(id));
     setIsOpen(false);
   };
 
@@ -55,7 +45,7 @@ export default function SortBy() {
               onClick={toggleDropdown}
             >
               {
-                apiResult?.available_sorts.find(sort => sort.id === sortBy)
+                apiResult?.available_sorts.find((sort) => sort.id === sortBy)
                   ?.name
               }
               <svg
@@ -66,7 +56,7 @@ export default function SortBy() {
                 viewBox="0 0 12 12"
                 fill="#3483fa"
                 style={{
-                  transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               >
                 <path
@@ -80,7 +70,7 @@ export default function SortBy() {
         {isOpen && (
           <div className="origin-top-right absolute right-0 w-36 rounded-md shadow-lg">
             <div className="rounded-md bg-white shadow-sm border-b">
-              {apiResult?.available_sorts.map(sort => (
+              {apiResult?.available_sorts.map((sort) => (
                 <div key={sort.id} className="flex flex-col border-t-2">
                   <button
                     onClick={() => handleSortByChange(sort.id)}
