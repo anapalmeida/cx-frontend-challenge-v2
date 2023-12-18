@@ -1,5 +1,5 @@
-@import 'maxins';
-@import 'variables';
+@import "maxins";
+@import "variables";
 
 .priceFilter {
   display: flex;
@@ -7,6 +7,7 @@
   flex-direction: column;
   height: 140px;
   transition: 0.3s;
+  cursor: default;
 
   @include for-tablet-portrait-down {
     background-color: $white;
@@ -54,6 +55,10 @@
     }
   }
 
+  &__price {
+    cursor: pointer;
+  }
+
   &__results {
     display: inline;
     font-size: 0.7rem;
@@ -74,7 +79,7 @@
   &__wrapper_left {
     &:after {
       color: $grey;
-      content: '—';
+      content: "—";
       font-size: x-small;
       line-height: 2px;
       margin: 0px 5px;

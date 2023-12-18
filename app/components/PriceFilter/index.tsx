@@ -74,7 +74,7 @@ export default function PriceFilter() {
               <li key={value.id} className={styles.priceFilter__line}>
                 <a
                   onClick={() => handleFilterChange(value.id)}
-                  className={`${styles.priceFilter__name}  ${montserrat.className}`}
+                  className={`${styles.priceFilter__price}  ${montserrat.className}`}
                   aria-label={`${value.name}. ${value.results} results`}
                 >
                   {value.name}&nbsp;&nbsp;
