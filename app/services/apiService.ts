@@ -23,39 +23,64 @@ const handleApiError = (error: ApiErrorResponse) => {
 };
 
 const constructApiUrl = ({ textToSearch, sortBy, priceFilter }: IApiParams) => {
-  let apiURL = `${NEXT_PUBLIC_API_BASE_URL}/search?q=${textToSearch}&sort=${sortBy}&limit=10`;
+  let apiURL = `${NEXT_PUBLIC_API_BASE_URL}/sites/MLA/search?q=${textToSearch}&sort=${sortBy}&limit=10`;
 
   if (!textToSearch.trim()) {
     throw new Error('Search text cannot be empty');
   }
 
   if (priceFilter) {
-    apiURL = `${NEXT_PUBLIC_API_BASE_URL}/search?q=${textToSearch}&sort=${sortBy}&price=${priceFilter}&limit=10`;
+    apiURL = `${NEXT_PUBLIC_API_BASE_URL}/sites/MLA/search?q=${textToSearch}&sort=${sortBy}&price=${priceFilter}&limit=10`;
   }
 
   return apiURL;
 };
 
-const mapProductData = (product: IApiProduct): IProduct => ({
-  id: product?.id,
-  title: product?.title,
-  price: {
-    currency: product?.installments?.currency_id,
-    amount: product?.price.toString(),
-    decimals: 0,
-  },
-  installments: {
-    quantity: product?.installments?.quantity,
-    amount: product?.installments?.amount,
-  },
-  address: {
-    state_name: 'Buenos Aires',
-    city_name: 'Buenos Aires',
-  },
-  picture: product?.thumbnail,
-  condition: product?.condition,
-  free_shipping: product?.shipping?.free_shipping,
-});
+const mapProductData = async (product: IApiProduct): Promise<IProduct> => {
+  const sellerID = product?.seller?.id;
+
+  let sellerAddress = {
+    state_name: 'N/A',
+    city_name: 'N/A',
+  };
+
+  try {
+    if (sellerID) {
+      const sellerResponse = await axios.get(
+        `${NEXT_PUBLIC_API_BASE_URL}/users/${sellerID}`
+      );
+
+      const sellerData = sellerResponse.data;
+
+      if (sellerData && sellerData.address) {
+        sellerAddress = {
+          state_name: sellerData.address.state || 'N/A',
+          city_name: sellerData.address.city || 'N/A',
+        };
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch seller address:', error);
+  }
+
+  return {
+    id: product?.id,
+    title: product?.title,
+    price: {
+      currency: product?.installments?.currency_id,
+      amount: product?.price.toString(),
+      decimals: 0,
+    },
+    installments: {
+      quantity: product?.installments?.quantity,
+      amount: product?.installments?.amount,
+    },
+    address: sellerAddress,
+    picture: product?.thumbnail,
+    condition: product?.condition,
+    free_shipping: product?.shipping?.free_shipping,
+  };
+};
 
 const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
   try {
@@ -70,7 +95,14 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
       const currentSort = data.sort;
       const mergedSorts = [].concat(availableSorts, currentSort);
 
-      const mappedProducts: IProduct[] = data.results.map(mapProductData);
+      const mappedProductsPromises: Promise<IProduct>[] = data.results.map(
+        async (product: IApiProduct) => {
+          const mappedProduct = await mapProductData(product);
+          return mappedProduct;
+        }
+      );
+
+      const mappedProducts = await Promise.all(mappedProductsPromises);
 
       return {
         available_filters: availableFilters,
@@ -80,6 +112,7 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
         results: mappedProducts,
       };
     }
+
     return {
       available_filters: [],
       available_sorts: [],

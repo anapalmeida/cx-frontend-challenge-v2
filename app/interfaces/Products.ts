@@ -1,6 +1,7 @@
 export interface IApiProduct {
   id: string;
   title: string;
+  seller: { id: number; nickname: string };
   price: {
     amount: number;
     decimals: number;

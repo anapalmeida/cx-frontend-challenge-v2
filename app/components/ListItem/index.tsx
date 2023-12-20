@@ -49,7 +49,11 @@ export default function ListItem({ props }: ListItemProps) {
         )}
       </div>
       <span className={`${styles.card__city} ${montserrat.className}`}>
-        {props.address?.city_name}
+        {props.address?.city_name
+          .toLowerCase()
+          .split(' ')
+          .map((s: any) => s.charAt(0).toUpperCase() + s.substring(1))
+          .join(' ')}
       </span>
     </article>
   );
