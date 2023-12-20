@@ -61,7 +61,7 @@ const mapProductData = async (product: IApiProduct): Promise<IProduct> => {
     }
   } catch (error) {
     handleApiError(error as AxiosError<ApiErrorResponse>);
-    throw new Error('Failed to fetch address');
+    throw new Error('Failed to fetch address information');
   }
 
   return {
