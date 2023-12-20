@@ -1,3 +1,10 @@
+@import 'maxins';
+
 .container {
   grid-column: 2;
+  
+  @include for-tablet-portrait-down {
+    margin-right: 1rem;
+     
+  }
 }

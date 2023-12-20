@@ -34,7 +34,7 @@ export default function SortBy() {
 
   return (
     <div
-      className={`${styles.container} }  mb-4 flex items-center  justify-end self-center md:flex-col md:items-end md:justify-end`}
+      className={`${styles.container} mb-4 flex items-center  justify-end self-center md:flex-col md:items-end md:justify-end`}
     >
       <h4 className={`text-sm sm:text-xs ${montserratBold.className}`}>
         Ordenar por
