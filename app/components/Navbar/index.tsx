@@ -23,6 +23,7 @@ export default function Navbar() {
         width={40}
         height={30}
         onClick={handleClearProducts}
+        className={styles.navbar__logo}
       />
       <SearchBar />
     </nav>

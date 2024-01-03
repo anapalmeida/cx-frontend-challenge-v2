@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   background-color: $yellow;
-  width: 100vw;
-  padding: 1rem;
+  width: 100lvw;
+  padding: 0.57rem;
 
   @include for-tablet-portrait-down {
     padding: 0.4rem 0;

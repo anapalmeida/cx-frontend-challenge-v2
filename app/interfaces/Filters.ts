@@ -2,13 +2,13 @@ export interface IFilter {
   id: string;
   name: string;
   type: string;
-  values: [
-    {
-      id: string;
-      name: string;
-      results: number;
-    }
-  ];
+  values: IFilterValues[];
+}
+
+export interface IFilterValues {
+  id: string;
+  name: string;
+  results: number;
 }
 
 export interface IFilters {

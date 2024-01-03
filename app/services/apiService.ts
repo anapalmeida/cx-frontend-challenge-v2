@@ -92,6 +92,7 @@ const makeApiRequest = async (apiURL: string): Promise<IApiResponseClient> => {
       const availableFilters = data.available_filters.filter(
         (filter: IFilter) => filter.id === 'price'
       );
+
       const availableSorts = data.available_sorts;
       const currentSort = data.sort;
       const mergedSorts = [].concat(availableSorts, currentSort);

@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  width: 60vw;
+  width: 80%;
 
   @include for-tablet-portrait-down {
     width: 100%;
@@ -17,5 +17,9 @@
 
   @include for-phone-only {
     gap: 0.3rem;
+  }
+
+  &__logo {
+    cursor: pointer;
   }
 }

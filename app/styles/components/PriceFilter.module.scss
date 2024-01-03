@@ -17,6 +17,8 @@
     position: absolute;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);
+    margin-left: 1rem;
+    margin-top: 0.3rem;
   }
 
   &__collapsed {
@@ -63,7 +65,7 @@
   &__results {
     display: inline;
     font-size: 0.7rem;
-    color: #d2d2d2ee;
+    color: $lightgrey;
   }
 
   &__range {
